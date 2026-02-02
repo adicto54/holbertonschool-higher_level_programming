@@ -1,21 +1,25 @@
 #!/usr/bin/python3
-"""This module lists all states with a name starting with N from the database."""
+"""Lists all states from the database hbtn_0e_0_usa"""
 
-import MySQLdb
 import sys
-# This is a comment
+import MySQLdb
+
 if __name__ == "__main__":
-    db = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=sys.argv[1],
-        passwd=sys.argv[2],
-        db=sys.argv[3]
-    )
+    # Get arguments
+    user, passwd, db_name = sys.argv[1], sys.argv[2], sys.argv[3]
+
+    # Connect to MySQL server
+    db = MySQLdb.connect(host="localhost", port=3306,
+                         user=user, passwd=passwd, db=db_name)
     cur = db.cursor()
+    
+    # Execute query
     cur.execute("SELECT * FROM states ORDER BY id ASC")
-    rows = cur.fetchall()
-    for row in rows:
+    
+    # Fetch and print results
+    for row in cur.fetchall():
         print(row)
+    
+    # Close cursor and connection
     cur.close()
     db.close()
