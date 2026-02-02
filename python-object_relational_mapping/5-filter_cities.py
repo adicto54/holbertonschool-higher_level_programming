@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""This module lists all states with a name starting with N from the database."""
+
 import MySQLdb
 import sys
 # This is a comment
