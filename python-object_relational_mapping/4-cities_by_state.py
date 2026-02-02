@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import MySQLdb
 import sys
-
+# This is a comment
 if __name__ == "__main__":
     db = MySQLdb.connect(
         host="localhost",
